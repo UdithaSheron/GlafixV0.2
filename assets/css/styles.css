@@ -1,0 +1,796 @@
+/*===== GOOGLE FONTS =====*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+/*===== VARIABLES CSS =====*/
+:root {
+  --header-height: 3rem;
+  --font-semi: 600;
+  /*===== Colores =====*/
+  /*Purple 260 - Red 355 - Blue 224 - Pink 340*/
+  /* HSL color mode */
+  --hue-color: 224;
+  --first-color: hsl(var(--hue-color), 89%, 60%);
+  --second-color: hsl(var(--hue-color), 56%, 12%);
+  /*===== Fuente y tipografia =====*/
+  --body-font: 'Poppins', sans-serif;
+  --big-font-size: 2rem;
+  --h2-font-size: 1.25rem;
+  --normal-font-size: .938rem;
+  --smaller-font-size: .75rem;
+  /*===== Margenes =====*/
+  --mb-2: 1rem;
+  --mb-4: 2rem;
+  --mb-5: 2.5rem;
+  --mb-6: 3rem;
+  /*===== z index =====*/
+  --z-back: -10;
+  --z-fixed: 100;
+}
+
+@media screen and (min-width: 968px) {
+  :root {
+    --big-font-size: 3.5rem;
+    --h2-font-size: 2rem;
+    --normal-font-size: 1rem;
+    --smaller-font-size: .875rem;
+  }
+}
+
+/*===== BASE =====*/
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: var(--header-height) 0 0 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  color: var(--second-color);
+  
+}
+
+h1, h2, p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/*===== CLASS CSS ===== */
+.section-title {
+  position: relative;
+  font-size: var(--h2-font-size);
+  color: var(--first-color);
+  margin-top: var(--mb-2);
+  margin-bottom: var(--mb-4);
+  text-align: center;
+}
+
+.section-title::after {
+  position: absolute;
+  content: '';
+  width: 64px;
+  height: 0.18rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 2rem;
+  background-color: var(--first-color);
+}
+
+.section {
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+/*===== LAYOUT =====*/
+.bd-grid {
+  max-width: 1024px;
+  display: grid;
+  margin-left: var(--mb-2);
+  margin-right: var(--mb-2);
+}
+
+.l-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background: linear-gradient(
+    90.21deg,
+    rgba(170, 54, 124, 0.5) -5.91%,
+    rgba(74, 47, 189, 0.5) 111.58%
+);
+  box-shadow: 0 1px 4px rgba(146, 161, 176, 0.15);
+  
+}
+
+/*===== NAV =====*/
+.nav-hidden {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+.l-header.nav-hidden .nav {
+  transform: translateY(-100%);
+}
+.nav__logo {
+  order: 1; /* Moves Glafix to the left */
+  margin-right: auto; /* Pushes the other elements to the right */
+}
+.nav__list .nav__link {
+  color: white; /* Set the text color to white */
+  /* Add any other styling you want for the links */
+}
+
+.nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: var(--font-semi);
+}
+.l-header.nav-visible .nav {
+  transform: translateY(0);
+  transition: transform 0.3s;
+}
+
+@media screen and (max-width: 767px) {
+  .nav__menu {
+    position: fixed;
+    top: var(--header-height);
+    right: -100%;
+    width: 80%;
+    height: 100%;
+    padding: 2rem;
+    background-color: var(--second-color);
+    transition: .5s;
+  }
+}
+
+.nav__item {
+  margin-bottom: var(--mb-4);
+}
+
+.nav__link {
+  position: relative;
+  color: #fff;
+}
+
+.nav__link:hover {
+  position: relative;
+}
+
+.nav__link:hover::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 0.18rem;
+  left: 0;
+  top: 2rem;
+  background-color: var(--first-color);
+}
+
+.nav__logo {
+  color:rebeccapurple;
+  font-size: 36px;
+  font-family:'Times New Roman', Times, serif;
+  text-align: left;
+}
+
+.nav__toggle {
+  color: var(--second-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/*Active menu*/
+.active::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 0.18rem;
+  left: 0;
+  top: 2rem;
+  background-color: var(--first-color);
+}
+
+/*=== Show menu ===*/
+.show {
+  right: 0;
+}
+
+/*===== HOME =====*/
+
+/* Assuming the CSS file is in the 'css' folder */
+.home {
+  position: relative;
+  row-gap: 5rem;
+  padding: 4rem 0 5rem;
+  
+}
+
+.home__data {
+  align-self: center;
+}
+
+.home__title {
+  font-size: var(--big-font-size);
+  margin-bottom: var(--mb-5);
+}
+
+.home__title-color {
+  color: rgb(87, 0, 128);
+}
+
+/*BUTTONS*/
+.button {
+  display: inline-block;
+  background: linear-gradient(
+    90.21deg,
+    rgba(170, 54, 124, 0.5) -5.91%,
+    rgba(74, 47, 189, 0.5) 111.58%
+);
+  color: #fff;
+  padding: .75rem 2.5rem;
+  font-weight: var(--font-semi);
+  border-radius: .5rem;
+  transition: .3s;
+}
+
+.button:hover {
+  box-shadow: 0px 10px 36px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== ABOUT =====*/
+.about__container {
+  row-gap: 2rem;
+  text-align: center;
+  
+}
+
+.about__subtitle {
+  margin-bottom: var(--mb-2);
+}
+
+.about__img {
+  justify-self: center;
+}
+
+.about__img img {
+  width: 200px;
+  border-radius: .5rem;
+}
+
+/* ===== SKILLS =====*/
+.skills__container {
+  row-gap: 2rem;
+  text-align: center;
+}
+
+.skills__data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  font-weight: var(--font-semi);
+  padding: .5rem 1rem;
+  margin-bottom: var(--mb-4);
+  border-radius: .5rem;
+  box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
+}
+
+.skills__img {
+  border-radius: .40px;
+  display: flex;
+    justify-content: center;
+  
+}
+
+/* ===== WORK =====*/
+.work__container {
+  row-gap: 2rem;
+}
+
+.work__img {
+  box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
+  border-radius: .5rem;
+  overflow: hidden;
+}
+
+.work__img img {
+  transition: 1s;
+}
+
+.work__img img:hover {
+  transform: scale(1.1);
+}
+
+/* ===== CONTACT =====*/
+.contact__input {
+  width: 100%;
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi);
+  padding: 1rem;
+  border-radius: .5rem;
+  border: 1.5px solid var(--second-color);
+  outline: none;
+  margin-bottom: var(--mb-4);
+}
+
+.contact__button {
+  display: block;
+  border: none;
+  outline: none;
+  font-size: var(--normal-font-size);
+  cursor: pointer;
+  margin-left: auto;
+}
+
+/* ===== FOOTER =====*/
+.footer {
+  background-color: rgb(0, 0, 0);
+  color: #fff;
+  font-weight: var(--font-semi);
+}
+
+.footer__title {
+  font-size: 2rem;
+}
+
+.footer__icon {
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0 var(--mb-2);
+}
+
+.footer__copy {
+  font-size: var(--smaller-font-size);
+}
+
+/* ===== MEDIA QUERIES=====*/
+@media screen and (max-width: 320px) {
+  .home {
+    row-gap: 2rem;
+  }
+  .home__img {
+    width: 200px;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .home {
+    padding: 4rem 0 2rem;
+  }
+  .home__social {
+    padding-top: 0;
+    padding-bottom: 2.5rem;
+    flex-direction: row;
+    align-self: flex-end;
+  }
+  .home__social-icon {
+    margin-bottom: 0;
+    margin-right: var(--mb-4);
+  }
+  .home__img {
+    width: 300px;
+    bottom: 25%;
+  }
+  .about__container {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    text-align: initial;
+  }
+  .skills__container {
+    grid-template-columns: .7fr;
+    justify-content: center;
+    column-gap: 1rem;
+  }
+  .work__container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    padding-top: 2rem;
+  }
+  .contact__form {
+    width: 360px;
+    padding-top: 2rem;
+  }
+  .contact__container {
+    justify-items: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    margin: 0;
+  }
+  .section {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+  }
+  .section-title {
+    margin-bottom: var(--mb-6);
+  }
+  .section-title::after {
+    width: 80px;
+    top: 3rem;
+  }
+  .nav {
+    height: calc(var(--header-height) + 1.5rem);
+  }
+  .nav__list {
+    display: flex;
+    padding-top: 0;
+  }
+  .nav__item {
+    margin-left: var(--mb-6);
+    margin-bottom: 0;
+  }
+  .nav__toggle {
+    display: none;
+  }
+  .nav__link {
+    color: var(--second-color);
+  }
+  .home {
+    padding: 8rem 0 2rem;
+  }
+  .home__img {
+    width: 400px;
+    bottom: 10%;
+  }
+  .about__container {
+    padding-top: 2rem;
+  }
+  .about__img img {
+    width: 300px;
+  }
+  .skills__container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    align-items: center;
+    text-align: initial;
+  }
+  .work__container {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .bd-grid {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .home {
+    padding: 10rem 0 2rem;
+  }
+  .home__img {
+    width: 450px;
+  }
+}
+
+/*Others*/
+.contact__input {
+  resize: none;
+}
+/* Style the error message in red */
+.error-message {
+  display: none;
+  color: red;
+}
+
+/* Style the success message in light green */
+.success-message {
+  display: none;
+  color: lightgreen;
+}
+
+.contact {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 40px;
+}
+
+.contact__container {
+  max-width: 400px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact__input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.contact__button {
+  padding: 10px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.contact__button:hover {
+  background-color: #0056b3;
+}
+.work__buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.work__buttons button {
+  margin: 0 10px;
+  padding: 8px 15px; /* Adjust the padding to control the button size */
+  font-size: 16px; /* Adjust the font size as per your preference */
+  border: none;
+  color: white;
+  background-image: linear-gradient(90.21deg, rgba(170, 54, 124, 0.5) -5.91%, rgba(74, 47, 189, 0.5) 111.58%);
+  cursor: pointer;
+  border-radius: 20px; /* Adds rounded corners to the button */
+}
+
+/* Optional: Add hover effect to the buttons */
+.work__buttons button:hover {
+  opacity: 0.9;
+}
+
+
+.about__text {
+  text-align: center;
+}
+
+/* Assuming the class "about__img" is used for the image container */
+.about__img {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+
+
+/* Additional styles for the animated-cards section */
+.animated-cards {
+  /* Add any specific styles you want for the "animated-cards" section here */
+}
+
+/* Your existing CSS styles */
+
+/* Additional styles for the animation cards */
+.cards-container {
+  display: inline-block;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 2px;
+  padding-right: 2px;
+  overflow: hidden;
+}
+
+.custom-card {
+  perspective: 1000px;
+  width: 324px;
+  height: 204px;
+  position: relative;
+}
+
+.custom-card > .front,
+.custom-card > .back {
+  &::before {
+    transition: all (3s / 3) s;
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-image: linear-gradient(135deg, rgba(238, 238, 238, 0) 0%, rgba(255, 255, 255, 0) 36%, rgba(255, 255, 255, 0.4) 36%, rgba(255, 255, 255, 0.4) 68%, rgba(247, 247, 247, 0) 69%, rgba(238, 238, 238, 0) 70%);
+    background-repeat: no-repeat;
+    background-position: 324px 0;
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  transition: transform 3s, z-index 3s 0s, box-shadow 3s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  will-change: transform;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 4px;
+  background-color: #fff;
+  backface-visibility: hidden;
+
+  > * {
+    height: 100%;
+  }
+}
+
+.card-image {
+  float: left;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  background-size: cover;
+  width: 108px;
+  background-color: #f5f5f5;
+  position: relative;
+
+  .card-heading {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 10px;
+    font-size: 1.5em;
+    text-align: right;
+    color: #fff;
+    text-transform: uppercase;
+  }
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 216px;
+  float: right;
+
+  button.card-flip {
+    border-radius: 9999em;
+    width: 30px;
+    height: 108px;
+    margin: 10px;
+    border: 0;
+    background-color: #dddddd;
+    color: #fff;
+    font-size: 1.5em;
+    float: right;
+    flex: 1;
+    outline: 0;
+    transition: background-color 0.3s ease-in, transform 0.4s;
+    transition-delay: 0.1s;
+
+    &:hover {
+      background-color: #16a8cf;
+    }
+
+    &:focus {
+      transform: rotate(-360deg);
+    }
+  }
+
+  span {
+    margin: 30px auto;
+    width: 80%;
+    flex: 2;
+  }
+
+  .action-link a {
+    text-transform: uppercase;
+    margin: 10px auto;
+    text-align: right;
+    width: 80%;
+    display: block;
+    flex: 1;
+  }
+}
+
+/* Additional styles for the flipped card */
+.custom-card.flip-it > .front {
+  transform: rotateY(-180deg);
+  z-index: 1;
+}
+
+.custom-card.flip-it > .back {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+/* Styles for the phone card */
+.phone-card {
+  background-color: #000; /* Background color of the card */
+  border-radius: 20px; /* Rounded corners to give the card a phone-like shape */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect for depth */
+  width: 320px; /* Set the width of the phone card */
+  max-width: 100%; /* Ensure the card doesn't exceed the width of its container */
+  margin: 0 auto; /* Center the card horizontally */
+  overflow: hidden; /* Hide any content that overflows the card */
+  position: relative; /* For positioning the screen content */
+  transform-style: preserve-3d; /* Apply 3D perspective to the card */
+  perspective: 1000px; /* Adjust the amount of 3D perspective */
+}
+
+/* Styles for the phone speaker */
+.phone-speaker {
+  width: 40px;
+  height: 4px;
+  background-color: #666; /* Color of the speaker */
+  margin: 10px auto; /* Center the speaker above the screen */
+  border-radius: 2px;
+}
+
+/* Styles for the phone camera */
+.phone-camera {
+  width: 8px;
+  height: 8px;
+  background-color: #333; /* Color of the camera */
+  margin: 5px auto;
+  border-radius: 50%;
+}
+
+/* Styles for the phone screen */
+.phone-screen {
+  padding: 0; /* Remove padding to fill the entire screen */
+  height: 100%; /* Fill the entire height of the phone screen */
+  border-radius: 10px; /* Rounded corners for the screen */
+  overflow: hidden; /* Hide any content that overflows the screen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.apple-icon {
+  width: 60px;
+  height: 60px;
+  background-image: url('path-to-apple-icon.png');
+  background-size: cover;
+  animation: appleIconsAnimation 1s ease;
+}
+.phone-home-button {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%); /* Center the home button horizontally */
+  width: 30px;
+  height: 30px;
+  background-color: #444; /* Color of the home button */
+  border-radius: 50%;
+  cursor: pointer; /* Add a pointer cursor to indicate it's clickable */
+}
+
+/* Styles for the home icon inside the home button */
+.home-icon {
+  width: 14px;
+  height: 18px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/256px-Apple_logo_black.svg.png');
+  background-size: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
